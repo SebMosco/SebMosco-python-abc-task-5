@@ -22,20 +22,27 @@ def update_currency_label_2(event):
 
 def exchange():
     target_code = target_combobox.get()
-    base_code = base_combobox_1.get()
-    if target_code and base_code:
+    base_code_1 = base_combobox_1.get()
+    base_code_2 = base_combobox_2.get()
+    if target_code and base_code_1 and base_code_2:
         try:
-            result = requests.get(f"https://open.er-api.com/v6/latest/{base_code}")
-            result.raise_for_status()
-            data = result.json()
-            if target_code in data['rates']:
-                exchange_rate = data['rates'][target_code]
-                base = currencies[base_code]
+            result_1 = requests.get(f"https://open.er-api.com/v6/latest/{base_code_1}")
+            result_2 = requests.get(f"https://open.er-api.com/v6/latest/{base_code_2}")
+            result_1.raise_for_status()
+            result_2.raise_for_status()
+            data_1 = result_1.json()
+            data_2 = result_2.json()
+            if target_code in data_1['rates'] and target_code in data_2['rates']:
+                exchange_rate_1 = data_1['rates'][target_code]
+                exchange_rate_2 = data_2['rates'][target_code]
+                base_1 = currencies[base_code_1]
+                base_2 = currencies[base_code_2]
                 target = currencies[target_code]
 
                 mb.showinfo('Курс обмена',
-                            f'Курс '
-                            f'  {exchange_rate:.1f}  {target} за 1 {base}')
+                            f'Курс \n'
+                            f'  {exchange_rate_1:.1f}  {target} за 1 {base_1} \n'
+                            f'  {exchange_rate_2:.1f}  {target} за 1 {base_2}')
             else:
                 mb.showerror('Ошибка', f'Валюта {target_code} не найдена')
 
