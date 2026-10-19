@@ -3,6 +3,7 @@ from tkinter import messagebox as mb
 from tkinter import ttk
 
 import requests
+from requests.exceptions import HTTPError
 
 
 def update_currency_label(event):
@@ -49,9 +50,10 @@ def exchange():
             else:
                 mb.showerror('Ошибка', f'Валюта {target_code} не найдена')
 
-
-        except Exception as e:
+        except HTTPError as e:
             mb.showerror('Ошибка', f'error 400 {e}')
+        except Exception as f:
+            mb.showerror('Ошибка', f'{f}')
 
 
 currencies = {
@@ -64,7 +66,7 @@ currencies = {
 pop_curr = ['EUR', 'USD', 'RUB', 'CNY']
 
 root = Tk()
-root.title("Курс обмена валют ")
+root.title("Курсы обмена валют ")
 root.geometry("300x350")
 Label(text='Базовая валюта').pack(pady=10, padx=10)
 base_combobox_1 = ttk.Combobox(values=list(currencies.keys()), state="readonly")
