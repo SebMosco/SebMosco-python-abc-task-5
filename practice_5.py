@@ -1,7 +1,8 @@
-import requests
 from tkinter import *
-from tkinter import ttk
 from tkinter import messagebox as mb
+from tkinter import ttk
+
+import requests
 
 
 def update_currency_label(event):
@@ -9,10 +10,12 @@ def update_currency_label(event):
     name = currencies[code]
     currency_label.config(text=name)
 
+    
 def update_currency_label_1(event):
     code = base_combobox_1.get()
     name = currencies[code]
     currency_label_1.config(text=name)
+
 
 def update_currency_label_2(event):
     code = base_combobox_2.get()
