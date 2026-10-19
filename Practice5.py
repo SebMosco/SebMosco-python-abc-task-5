@@ -41,8 +41,8 @@ def exchange():
 
                 mb.showinfo('Курс обмена',
                             f'Курс \n'
-                            f'  {exchange_rate_1:.1f}  {target} за 1 {base_1} \n'
-                            f'  {exchange_rate_2:.1f}  {target} за 1 {base_2}')
+                            f'  {exchange_rate_1:.2f}  {target} за 1 {base_1} \n'
+                            f'  {exchange_rate_2:.2f}  {target} за 1 {base_2}')
             else:
                 mb.showerror('Ошибка', f'Валюта {target_code} не найдена')
 
