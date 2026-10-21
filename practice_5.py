@@ -69,8 +69,6 @@ currencies = {
     "CHF": "Швейцарский франк"
 }
 
-pop_curr = ['EUR', 'USD', 'RUB', 'CNY', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF', 'KZT', 'UZS']
-
 root = Tk()
 root.title("Курсы обмена валют ")
 root.geometry("300x350")
